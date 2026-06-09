@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Link from "next/link";
-import img from "next/image";
 
 type News = {
   id: number;

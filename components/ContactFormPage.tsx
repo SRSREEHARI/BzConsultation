@@ -19,7 +19,8 @@ export default function ContactFormPage() {
     project: "",
   });
 
-  const [errors, setErrors] = useState<any>({});
+  type FormErrors = Partial<Record<string, string>>;
+  const [errors, setErrors] = useState<FormErrors>({});
 
   // HANDLE CHANGE + CLEAR ERROR
   const handleChange = (
@@ -30,40 +31,10 @@ export default function ContactFormPage() {
       [e.target.name]: e.target.value,
     });
 
-    setErrors((prev: any) => ({
+    setErrors((prev) => ({
       ...prev,
       [e.target.name]: "",
     }));
-  };
-
-  // VALIDATION
-  const validateForm = () => {
-    const newErrors: any = {};
-
-    if (!formData.firstName.trim())
-      newErrors.firstName = "First name is required";
-
-    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required";
-
-    if (!formData.email.trim()) newErrors.email = "Email is required";
-    else if (!/^\S+@\S+\.\S+$/.test(formData.email))
-      newErrors.email = "Invalid email";
-
-    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
-
-    if (!formData.project.trim())
-      newErrors.project = "Project details required";
-
-    if (!timeline) newErrors.timeline = "Select timeline";
-    if (!businessType) newErrors.businessType = "Select business type";
-
-    if (!source || source === "Select an option")
-      newErrors.source = "Select source";
-
-    if (!captcha) newErrors.captcha = "Verify captcha";
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -178,10 +149,10 @@ export default function ContactFormPage() {
                 placeholder="First name"
               />
               {errors.firstName && (
-  <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
-    {errors.firstName}
-  </p>
-)}
+                <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
+                  {errors.firstName}
+                </p>
+              )}
             </div>
 
             {/* LAST NAME */}
@@ -196,10 +167,10 @@ export default function ContactFormPage() {
                 placeholder="Last name"
               />
               {errors.lastName && (
-  <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
-    {errors.lastName}
-  </p>
-)}
+                <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
+                  {errors.lastName}
+                </p>
+              )}
             </div>
 
             {/* EMAIL */}
@@ -214,10 +185,10 @@ export default function ContactFormPage() {
                 placeholder="Email address"
               />
               {errors.email && (
-  <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
-    {errors.email}
-  </p>
-)}
+                <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
+                  {errors.email}
+                </p>
+              )}
             </div>
 
             {/* PHONE */}
@@ -232,10 +203,10 @@ export default function ContactFormPage() {
                 placeholder="Phone number"
               />
               {errors.phone && (
-  <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
-    {errors.phone}
-  </p>
-)}
+                <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
+                  {errors.phone}
+                </p>
+              )}
             </div>
           </form>
 
@@ -255,68 +226,65 @@ export default function ContactFormPage() {
               placeholder="Quick project overview"
             />
             {errors.businessType && (
-  <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
-    {errors.businessType}
-  </p>
-)}
+              <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
+                {errors.businessType}
+              </p>
+            )}
           </div>
         </div>
       </section>
 
-      
       <section className="bg-white dark:bg-black py-5">
-  <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          {/* TIMELINE */}
+          <h3 className="font-bold text-[16px] tracking-[0.5px] leading-[30px]  mb-4">
+            What&apos;s your timeline?
+          </h3>
 
-    {/* TIMELINE */}
-    <h3 className="font-bold text-[16px] tracking-[0.5px] leading-[30px]  mb-4">
-      What&apos;s your timeline?
-    </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {[
+              { title: "No timeline", sub: "(just researching)" },
+              { title: "Planning", sub: "(looking to start in 6 months)" },
+              { title: "Immediate", sub: "(ready to start today)" },
+            ].map((item) => (
+              <label
+                key={item.title}
+                className="flex items-center gap-5 justify-center cursor-pointer text-left "
+              >
+                <input
+                  type="radio"
+                  name="timeline"
+                  checked={timeline === item.title}
+                  onChange={() => setTimeline(item.title)}
+                  className="hidden "
+                />
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-      {[
-        { title: "No timeline", sub: "(just researching)" },
-        { title: "Planning", sub: "(looking to start in 6 months)" },
-        { title: "Immediate", sub: "(ready to start today)" },
-      ].map((item) => (
-        <label
-          key={item.title}
-          className="flex items-center gap-5 justify-center cursor-pointer text-left "
-        >
-          <input
-            type="radio"
-            name="timeline"
-            checked={timeline === item.title}
-            onChange={() => setTimeline(item.title)}
-            className="hidden "
-          />
+                {/* RADIO */}
+                <span
+                  className={`w-4 h-4 rounded-full border flex items-center justify-center ${
+                    timeline === item.title
+                      ? "bg-orange-500  border-2 border-blue-500  peer-checked:ring-5 peer-checked:ring-orange-500 "
+                      : "bg-white dark:border-none border-gray-500"
+                  }`}
+                >
+                  {timeline === item.title && (
+                    <span className="w-2.5 h-2.5 bg-amber-600 dark:bg-white rounded-full" />
+                  )}
+                </span>
 
-          {/* RADIO */}
-          <span
-            className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-              timeline === item.title
-                ? "bg-orange-500  border-2 border-blue-500  peer-checked:ring-5 peer-checked:ring-orange-500 "
-                : "bg-white dark:border-none border-gray-500"
-            }`}
-          >
-            {timeline === item.title && (
-              <span className="w-2.5 h-2.5 bg-amber-600 dark:bg-white rounded-full" />
-            )}
-          </span>
-
-          <div className="text-center">
-            <p className="font-medium text-black dark:text-white  text-center ">
-              {item.title}
-            </p>
-            <p className="text-sm  ">
-              {item.sub}
-            </p>
+                <div className="text-center">
+                  <p className="font-medium text-black dark:text-white  text-center ">
+                    {item.title}
+                  </p>
+                  <p className="text-sm  ">{item.sub}</p>
+                </div>
+              </label>
+            ))}
           </div>
-        </label>
-      ))}
-    </div>
 
-   {errors.timeline && (
-  <p className="
+          {errors.timeline && (
+            <p
+              className="
     text-[#FFA500] 
     text-[16px] 
     font-medium 
@@ -324,104 +292,102 @@ export default function ContactFormPage() {
     leading-[30px] 
     text-center 
     
-  ">
-    {errors.timeline}
-  </p>
-)}
+  "
+            >
+              {errors.timeline}
+            </p>
+          )}
 
-    {/* BUSINESS */}
-    <h3 className="mt-12 mb-5 font-bold ">
-      Type of business
-    </h3>
+          {/* BUSINESS */}
+          <h3 className="mt-12 mb-5 font-bold ">Type of business</h3>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {["Startup", "Small to medium business", "Enterprise"].map((type) => (
-        <label
-          key={type}
-          className="flex items-center gap-4 justify-center cursor-pointer text-left"
-        >
-          <input
-            type="radio"
-            name="business"
-            checked={businessType === type}
-            onChange={() => setBusinessType(type)}
-            className="hidden"
-          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {["Startup", "Small to medium business", "Enterprise"].map(
+              (type) => (
+                <label
+                  key={type}
+                  className="flex items-center gap-4 justify-center cursor-pointer text-left"
+                >
+                  <input
+                    type="radio"
+                    name="business"
+                    checked={businessType === type}
+                    onChange={() => setBusinessType(type)}
+                    className="hidden"
+                  />
 
-          <span
-            className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-              businessType === type
-                ? "bg-orange-500  border-blue-500  peer-checked:ring-8 peer-checked:ring-orange-500 "
-                : "bg-white dark:border-none border-gray-500"
-            }`}
-          >
-            {businessType === type && (
-              <span className="w-2.5 h-2.5 bg-amber-600 dark:bg-white rounded-full" />
+                  <span
+                    className={`w-4 h-4 rounded-full border flex items-center justify-center ${
+                      businessType === type
+                        ? "bg-orange-500  border-blue-500  peer-checked:ring-8 peer-checked:ring-orange-500 "
+                        : "bg-white dark:border-none border-gray-500"
+                    }`}
+                  >
+                    {businessType === type && (
+                      <span className="w-2.5 h-2.5 bg-amber-600 dark:bg-white rounded-full" />
+                    )}
+                  </span>
+
+                  <p className="font-medium text-black mt-2 text-center dark:text-white">
+                    {type}
+                  </p>
+                </label>
+              ),
             )}
-          </span>
+          </div>
 
-          <p className="font-medium text-black mt-2 text-center dark:text-white">
-            {type}
-          </p>  
-        </label>
-      ))}
-    </div>
+          {errors.businessType && (
+            <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
+              {errors.businessType}
+            </p>
+          )}
 
-    {errors.businessType && (
-  <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
-    {errors.businessType}
-  </p>
-)}
-
-    <h3 className="mt-12  font-bold ">
-      Where did you hear about us
-    </h3>
-    <div className="mt-10 w-full">
-      <div
-        onClick={() => setOpen(!open)}
-        className="w-full h-[60px] flex items-center justify-between px-4 rounded-md cursor-pointer input"
-      >
-        {source || "Select an option"}
-        <span className="text-gray-500">▼</span>
-      </div>
-
-      {open && (
-        <div className="mt-2 rounded-md overflow-hidden border dark:border-white">
-          {[
-            "Select an option",
-            "Social media",
-            "Referral",
-            "Advertisement",
-          ].map((item) => (
+          <h3 className="mt-12  font-bold ">Where did you hear about us</h3>
+          <div className="mt-10 w-full">
             <div
-              key={item}
-              onClick={() => {
-                setSource(item);
-                setOpen(false);
-              }}
-              className="px-4 py-3 cursor-pointer 
+              onClick={() => setOpen(!open)}
+              className="w-full h-[60px] flex items-center justify-between px-4 rounded-md cursor-pointer input"
+            >
+              {source || "Select an option"}
+              <span className="text-gray-500">▼</span>
+            </div>
+
+            {open && (
+              <div className="mt-2 rounded-md overflow-hidden border dark:border-white">
+                {[
+                  "Select an option",
+                  "Social media",
+                  "Referral",
+                  "Advertisement",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    onClick={() => {
+                      setSource(item);
+                      setOpen(false);
+                    }}
+                    className="px-4 py-3 cursor-pointer 
               bg-[#EAEAEA] dark:bg-black
               text-black dark:text-white
               border-b border-black dark:border-white
               hover:bg-orange-500 hover:text-white transition"
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
-   {errors.source && (
-  <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
-    {errors.source}
-  </p>
-)}
+          {errors.source && (
+            <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center mb-4">
+              {errors.source}
+            </p>
+          )}
 
-    {/* CAPTCHA + BUTTON */}
-    <div className="mt-5 flex flex-col items-center gap-2">
-
-       <div className="">
+          {/* CAPTCHA + BUTTON */}
+          <div className="mt-5 flex flex-col items-center gap-2">
+            <div className="">
               <ReCAPTCHA
                 key={theme}
                 theme={theme === "dark" ? "dark" : "light"}
@@ -430,22 +396,22 @@ export default function ContactFormPage() {
               />
             </div>
 
-      {errors.captcha && (
-  <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center ">
-    {errors.captcha}
-  </p>
-)}
+            {errors.captcha && (
+              <p className="text-[#FFA500] text-[16px] font-medium tracking-[0.5px] leading-[30px] text-center ">
+                {errors.captcha}
+              </p>
+            )}
 
-      <button
-        type="submit"
-        onClick={handleSubmit}
-        className="relative overflow-hidden group
+            <button
+              type="submit"
+              onClick={handleSubmit}
+              className="relative overflow-hidden group
         font-bold text-lg 
         px-10 py-4 
         text-white bg-orange-500 mt-3"
-      >
-        <span
-          className="
+            >
+              <span
+                className="
           absolute left-1/2 top-1/2
           w-[150%] h-0
           bg-white
@@ -454,16 +420,15 @@ export default function ContactFormPage() {
           transition-all duration-500
           group-hover:h-[400%]
           z-0"
-        ></span>
+              ></span>
 
-        <span className="relative z-10 group-hover:text-orange-500 transition">
-          Submit
-        </span>
-      </button>
-    </div>
-
-  </div>
-</section>
+              <span className="relative z-10 group-hover:text-orange-500 transition">
+                Submit
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

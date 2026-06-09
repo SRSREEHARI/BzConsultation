@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 
 import { Plus_Jakarta_Sans } from "next/font/google";
-import img from "next/image";
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],

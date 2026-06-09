@@ -2,6 +2,9 @@
 
 import { motion, useScroll } from "motion/react";
 import { useRef, useState, useEffect } from "react";
+
+type ScrollLatest = number;
+
 import { FaArrowUpLong } from "react-icons/fa6";
 
 export default function ScrollProgressButton() {
@@ -11,7 +14,7 @@ export default function ScrollProgressButton() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    return scrollY.on("change", (latest) => {
+    return scrollY.on("change", (latest: ScrollLatest) => {
       if (latest > 300) {
         setVisible(true);
       } else {
@@ -36,7 +39,6 @@ export default function ScrollProgressButton() {
       transition={{ duration: 0.3 }}
     >
       <div className="relative w-14 h-14 flex items-center justify-center">
-
         {/* Progress Ring */}
         <svg
           className="absolute -rotate-90 pointer-events-none"
@@ -71,7 +73,6 @@ export default function ScrollProgressButton() {
         >
           <FaArrowUpLong />
         </button>
-
       </div>
     </motion.div>
   );

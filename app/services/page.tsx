@@ -7,7 +7,6 @@ import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import BreadcrumbWrapper from "@/components/BreadcrumbWrapper";
-import img from "next/image";
 
 interface Service {
   icon: string;
@@ -16,9 +15,9 @@ interface Service {
   link: string;
 }
 
+export default function ServicesPage() {
+  // NOTE: This file is a React client component.
 
-
-const page = () => {
   const [services, setServices] = useState<Service[]>([]);
 
   useEffect(() => {
@@ -27,8 +26,6 @@ const page = () => {
     });
     AOS.refresh();
   }, []);
-
- 
 
   useEffect(() => {
     fetch("/api/services")
@@ -222,7 +219,8 @@ const page = () => {
                   </h3>
                   <p className=" theme-text text-sm sm:text-base leading-relaxed">
                     Our team of seasoned professionals brings a wealth of
-                    expertise and experience to ensure your project&apos;s success.
+                    expertise and experience to ensure your project&apos;s
+                    success.
                   </p>
                 </div>
               </div>
@@ -324,8 +322,8 @@ px-2 sm:px-3 md:px-4
             <div className="absolute inset-0 bg-black/60 -translate-y-full flex flex-col items-center justify-center text-center p-4 transition-transform duration-500 group-hover:translate-y-0">
               <p className="text-white mb-3 text-sm sm:text-base">
                 Flexible teams for custom software development, scaling, and
-                extending your internal team&apos;s capabilities, led by dedicated
-                developers and product owners.
+                extending your internal team&apos;s capabilities, led by
+                dedicated developers and product owners.
               </p>
               <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
                 Read More
@@ -434,6 +432,4 @@ px-2 sm:px-3 md:px-4
       </div>
     </>
   );
-};
-
-export default page;
+}

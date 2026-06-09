@@ -1,5 +1,4 @@
 "use client";
-import img from "next/image";
 import Link from "next/link";
 
 type Blog = {

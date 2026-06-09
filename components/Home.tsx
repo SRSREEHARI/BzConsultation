@@ -7,7 +7,6 @@ import { FiArrowDownRight } from "react-icons/fi";
 import { IoSettings } from "react-icons/io5";
 import { BiCodeBlock } from "react-icons/bi";
 import "aos";
-import img from "next/image";
 import HomeReview from "./about/HomeReview";
 
 import { FaArrowRight } from "react-icons/fa6";
@@ -192,7 +191,8 @@ const Home = ({ showHero = true }: HomeProps) => {
     },
     {
       id: 3,
-      title: "From Vision to Reality: BzAnalytics&apos;s Journey from 2020 to 2023",
+      title:
+        "From Vision to Reality: BzAnalytics&apos;s Journey from 2020 to 2023",
       category: "Journey",
       date: "16 APR",
       image: "/newsimage3.jpg",
@@ -220,7 +220,9 @@ const Home = ({ showHero = true }: HomeProps) => {
               {" "}
               {/* adjust based on navbar height */}
               <div
-                style={{ backgroundImage: `url(${homeSlide[currentIndex].img})` }}
+                style={{
+                  backgroundImage: `url(${homeSlide[currentIndex].img})`,
+                }}
                 className="w-full h-[calc(100vh-80px)] bg-center bg-no-repeat bg-cover absolute inset-0"
               ></div>
             </div>
@@ -468,7 +470,6 @@ hover:w-[420px] hover:h-[280px] hover:z-20
                   <img
                     src={card.img}
                     alt={card.title}
-                     
                     className="object-cover "
                   />
 
@@ -510,9 +511,9 @@ hover:w-[420px] hover:h-[280px] hover:z-20
                 style={{ letterSpacing: "1px" }}
               >
                 <RxDotFilled className="min-w-[24px]" size={24} />
-                BzAnalytics works with the world&apos;s leading Enterprises, SMEs &
-                Startups – to plan, develop, test and expand their digital
-                initiatives.
+                BzAnalytics works with the world&apos;s leading Enterprises,
+                SMEs & Startups – to plan, develop, test and expand their
+                digital initiatives.
               </li>
 
               <li
@@ -528,23 +529,21 @@ hover:w-[420px] hover:h-[280px] hover:z-20
         </div>
       </section>
       <section className="w-full bg-white dark:bg-black text-white py-20 px-6 md:px-12 lg:px-20">
-  {/* cards */}
-  <div className="w-full theme-bg py-12 sm:py-14 md:py-16 px-4 sm:px-6 md:px-8 lg:-mt-[20px]">
-    
-    <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      
-      {/* Card 1 */}
-      <div className="relative w-full max-w-sm overflow-hidden shadow-lg group cursor-pointer transition-all duration-500 ease-out hover:shadow-2xl">
-        
-        <img
-          src="/ux_1.jpg"
-          alt="UX Design"
-          className="w-full h-[350px] object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-        />
+        {/* cards */}
+        <div className="w-full theme-bg py-12 sm:py-14 md:py-16 px-4 sm:px-6 md:px-8 lg:-mt-[20px]">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Card 1 */}
+            <div className="relative w-full max-w-sm overflow-hidden shadow-lg group cursor-pointer transition-all duration-500 ease-out hover:shadow-2xl">
+              <img
+                src="/ux_1.jpg"
+                alt="UX Design"
+                className="w-full h-[350px] object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              />
 
-        {/* Orange Circle */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-56 aspect-square flex-shrink-0 rounded-full bg-orange-400/80 
+              {/* Orange Circle */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div
+                  className="w-56 aspect-square flex-shrink-0 rounded-full bg-orange-400/80 
           flex items-center justify-center p-4
 
           transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
@@ -552,46 +551,49 @@ hover:w-[420px] hover:h-[280px] hover:z-20
           group-hover:scale-x-125 group-hover:scale-y-75
           group-hover:translate-y-40
           group-hover:opacity-0
-          ">
-            <p className="text-white font-extrabold text-center leading-[1.1]">
-              <span className="block text-2xl sm:text-3xl">UX/UI</span>
-              <span className="block text-2xl sm:text-3xl">Design</span>
-            </p>
-          </div>
-        </div>
+          "
+                >
+                  <p className="text-white font-extrabold text-center leading-[1.1]">
+                    <span className="block text-2xl sm:text-3xl">UX/UI</span>
+                    <span className="block text-2xl sm:text-3xl">Design</span>
+                  </p>
+                </div>
+              </div>
 
-        {/* Black Overlay */}
-        <div className="absolute inset-0 bg-black/60 
+              {/* Black Overlay */}
+              <div
+                className="absolute inset-0 bg-black/60 
         flex flex-col items-center justify-center text-center p-4
 
         -translate-y-[105%]
         transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
         delay-200
 
-        group-hover:translate-y-0">
-          <p className="text-white mb-3 text-sm sm:text-base">
-            Enhancing user experiences through research, wireframes, and
-            prototypes, creating visually appealing and user-friendly
-            interfaces.
-          </p>
-          <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
-            Read More
-            <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
-          </p>
-        </div>
-      </div>
+        group-hover:translate-y-0"
+              >
+                <p className="text-white mb-3 text-sm sm:text-base">
+                  Enhancing user experiences through research, wireframes, and
+                  prototypes, creating visually appealing and user-friendly
+                  interfaces.
+                </p>
+                <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
+                  Read More
+                  <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
+                </p>
+              </div>
+            </div>
 
-      {/* Card 2 */}
-      <div className="relative w-full max-w-sm overflow-hidden shadow-lg group cursor-pointer transition-all duration-500 ease-out hover:shadow-2xl">
-        
-        <img
-          src="/ux_2.jpg"
-          alt="UX Design 2"
-          className="w-full h-[350px] object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-        />
+            {/* Card 2 */}
+            <div className="relative w-full max-w-sm overflow-hidden shadow-lg group cursor-pointer transition-all duration-500 ease-out hover:shadow-2xl">
+              <img
+                src="/ux_2.jpg"
+                alt="UX Design 2"
+                className="w-full h-[350px] object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              />
 
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-56 aspect-square flex-shrink-0 rounded-full bg-orange-400/80 
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div
+                  className="w-56 aspect-square flex-shrink-0 rounded-full bg-orange-400/80 
           flex items-center justify-center p-4
 
           transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
@@ -599,46 +601,51 @@ hover:w-[420px] hover:h-[280px] hover:z-20
           group-hover:scale-x-125 group-hover:scale-y-75
           group-hover:translate-y-40
           group-hover:opacity-0
-          ">
-            <p className="text-white font-extrabold text-center leading-[1.1]">
-              <span className="block text-2xl sm:text-3xl">On Demand</span>
-              <span className="block text-2xl sm:text-3xl">Product</span>
-              <span className="block text-2xl sm:text-3xl">Team</span>
-            </p>
-          </div>
-        </div>
+          "
+                >
+                  <p className="text-white font-extrabold text-center leading-[1.1]">
+                    <span className="block text-2xl sm:text-3xl">
+                      On Demand
+                    </span>
+                    <span className="block text-2xl sm:text-3xl">Product</span>
+                    <span className="block text-2xl sm:text-3xl">Team</span>
+                  </p>
+                </div>
+              </div>
 
-        <div className="absolute inset-0 bg-black/60 
+              <div
+                className="absolute inset-0 bg-black/60 
         flex flex-col items-center justify-center text-center p-4
 
         -translate-y-[105%]
         transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
         delay-200
 
-        group-hover:translate-y-0">
-          <p className="text-white mb-3 text-sm sm:text-base">
-            Flexible teams for custom software development, scaling, and
-            extending your internal team's capabilities, led by dedicated
-            developers and product owners.
-          </p>
-          <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
-            Read More
-            <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
-          </p>
-        </div>
-      </div>
+        group-hover:translate-y-0"
+              >
+                <p className="text-white mb-3 text-sm sm:text-base">
+                  Flexible teams for custom software development, scaling, and
+                  extending your internal team&apos;s capabilities, led by dedicated
+                  developers and product owners.
+                </p>
+                <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
+                  Read More
+                  <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
+                </p>
+              </div>
+            </div>
 
-      {/* Card 3 */}
-      <div className="relative w-full max-w-sm overflow-hidden shadow-lg group cursor-pointer transition-all duration-500 ease-out hover:shadow-2xl">
-        
-        <img
-          src="/ux_3.jpg"
-          alt="UX Design 3"
-          className="w-full h-[350px] object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-        />
+            {/* Card 3 */}
+            <div className="relative w-full max-w-sm overflow-hidden shadow-lg group cursor-pointer transition-all duration-500 ease-out hover:shadow-2xl">
+              <img
+                src="/ux_3.jpg"
+                alt="UX Design 3"
+                className="w-full h-[350px] object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              />
 
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-56 aspect-square flex-shrink-0 rounded-full bg-orange-400/80 
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div
+                  className="w-56 aspect-square flex-shrink-0 rounded-full bg-orange-400/80 
           flex items-center justify-center p-4
 
           transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
@@ -646,45 +653,52 @@ hover:w-[420px] hover:h-[280px] hover:z-20
           group-hover:scale-x-125 group-hover:scale-y-75
           group-hover:translate-y-40
           group-hover:opacity-0
-          ">
-            <p className="text-white font-extrabold text-center leading-[1.1]">
-              <span className="block text-2xl sm:text-3xl">Mobile App</span>
-              <span className="block text-2xl sm:text-3xl">Development</span>
-            </p>
-          </div>
-        </div>
+          "
+                >
+                  <p className="text-white font-extrabold text-center leading-[1.1]">
+                    <span className="block text-2xl sm:text-3xl">
+                      Mobile App
+                    </span>
+                    <span className="block text-2xl sm:text-3xl">
+                      Development
+                    </span>
+                  </p>
+                </div>
+              </div>
 
-        <div className="absolute inset-0 bg-black/60 
+              <div
+                className="absolute inset-0 bg-black/60 
         flex flex-col items-center justify-center text-center p-4
 
         -translate-y-[105%]
         transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
         delay-200
 
-        group-hover:translate-y-0">
-          <p className="text-white mb-3 text-sm sm:text-base">
-            Building iOS and Android apps, including cross-platform
-            development using Flutter, tailored for both consumer and
-            enterprise needs.
-          </p>
-          <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
-            Read More
-            <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
-          </p>
-        </div>
-      </div>
+        group-hover:translate-y-0"
+              >
+                <p className="text-white mb-3 text-sm sm:text-base">
+                  Building iOS and Android apps, including cross-platform
+                  development using Flutter, tailored for both consumer and
+                  enterprise needs.
+                </p>
+                <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
+                  Read More
+                  <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
+                </p>
+              </div>
+            </div>
 
-      {/* Card 4 */}
-      <div className="relative w-full max-w-sm overflow-hidden shadow-lg group cursor-pointer transition-all duration-500 ease-out hover:shadow-2xl">
-        
-        <img
-          src="/ux_4.jpg"
-          alt="UX Design 4"
-          className="w-full h-[350px] object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-        />
+            {/* Card 4 */}
+            <div className="relative w-full max-w-sm overflow-hidden shadow-lg group cursor-pointer transition-all duration-500 ease-out hover:shadow-2xl">
+              <img
+                src="/ux_4.jpg"
+                alt="UX Design 4"
+                className="w-full h-[350px] object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              />
 
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-56 aspect-square flex-shrink-0 rounded-full bg-orange-400/80 
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div
+                  className="w-56 aspect-square flex-shrink-0 rounded-full bg-orange-400/80 
           flex items-center justify-center p-4
 
           transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
@@ -692,37 +706,41 @@ hover:w-[420px] hover:h-[280px] hover:z-20
           group-hover:scale-x-125 group-hover:scale-y-75
           group-hover:translate-y-40
           group-hover:opacity-0
-          ">
-            <p className="text-white font-extrabold text-center leading-[1.1]">
-              <span className="block text-2xl sm:text-3xl">Web</span>
-              <span className="block text-2xl sm:text-3xl">Development</span>
-            </p>
-          </div>
-        </div>
+          "
+                >
+                  <p className="text-white font-extrabold text-center leading-[1.1]">
+                    <span className="block text-2xl sm:text-3xl">Web</span>
+                    <span className="block text-2xl sm:text-3xl">
+                      Development
+                    </span>
+                  </p>
+                </div>
+              </div>
 
-        <div className="absolute inset-0 bg-black/60 
+              <div
+                className="absolute inset-0 bg-black/60 
         flex flex-col items-center justify-center text-center p-4
 
         -translate-y-[105%]
         transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
         delay-200
 
-        group-hover:translate-y-0">
-          <p className="text-white mb-3 text-sm sm:text-base">
-            Crafting websites, web applications, and custom software,
-            along with creating web portals for specific business
-            purposes.
-          </p>
-          <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
-            Read More
-            <FaArrowRight className="transition-transform duration-300 text-white ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
-          </p>
+        group-hover:translate-y-0"
+              >
+                <p className="text-white mb-3 text-sm sm:text-base">
+                  Crafting websites, web applications, and custom software,
+                  along with creating web portals for specific business
+                  purposes.
+                </p>
+                <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
+                  Read More
+                  <FaArrowRight className="transition-transform duration-300 text-white ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+      </section>
       {/* card section */}
 
       <section className="w-full px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
@@ -814,7 +832,6 @@ hover:w-[420px] hover:h-[280px] hover:z-20
               <img
                 className="w-full h-full object-cover relative transition-all duration-300 ease-in-out dark:mix-blend-normal mix-blend-luminosity"
                 src="/dubai.jpg"
-                 
                 alt="bzMart"
                 loading="lazy"
               />
@@ -856,7 +873,6 @@ hover:w-[420px] hover:h-[280px] hover:z-20
               <img
                 className="w-full h-full object-cover relative transition-all duration-300 ease-in-out dark:mix-blend-normal mix-blend-luminosity"
                 src="/bzmart.jpg"
-                 
                 alt="bzMart"
                 loading="lazy"
               />
@@ -900,7 +916,6 @@ hover:w-[420px] hover:h-[280px] hover:z-20
                 src="/medical.jpg"
                 alt="Medical AI"
                 loading="lazy"
-                 
               />
             </div>
           </div>
@@ -942,7 +957,6 @@ hover:w-[420px] hover:h-[280px] hover:z-20
                 src="/turf.jpg"
                 alt="Turf"
                 loading="lazy"
-                 
               />
             </div>
           </div>
@@ -1240,7 +1254,7 @@ hover:w-[420px] hover:h-[280px] hover:z-20
                 3rd party apps
               </p>
               <img
-              alt="icon"
+                alt="icon"
                 src="/award-icon.png"
                 className="mt-2.5 group-hover:scale-90 transition-all duration-1000 ease-in-out"
               />
@@ -1255,7 +1269,7 @@ hover:w-[420px] hover:h-[280px] hover:z-20
                 Deploy on any cloud/on-premise environment
               </p>
               <img
-              alt="icon"
+                alt="icon"
                 src="/award-icon.png"
                 className=" mt-2.5 group-hover:scale-90 transition-all duration-1000 ease-in-out"
               />
@@ -1294,7 +1308,7 @@ hover:w-[420px] hover:h-[280px] hover:z-20
                 apps.
               </p>
               <img
-              alt="icon"
+                alt="icon"
                 src="/award-icon.png"
                 className=" mt-2.5 group-hover:scale-90 transition-all duration-1000 ease-in-out"
               />
@@ -1310,7 +1324,7 @@ hover:w-[420px] hover:h-[280px] hover:z-20
                 different level of data maturity
               </p>
               <img
-              alt="icon"
+                alt="icon"
                 src="/award-icon.png"
                 className=" mt-2.5 group-hover:scale-90 transition-all duration-1000 ease-in-out"
               />
@@ -1376,7 +1390,6 @@ hover:w-[420px] hover:h-[280px] hover:z-20
                       <img
                         src={step.image}
                         alt={step.title}
-                         
                         className="object-cover"
                       />
                     </div>
